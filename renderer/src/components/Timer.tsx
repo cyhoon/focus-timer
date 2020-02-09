@@ -1,6 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
 
+import { makeTwoLengthToNumber } from '../utils/StringUtil';
+
 interface Props {
   hour: number;
   minute: number;
@@ -10,11 +12,11 @@ interface Props {
 const Timer: React.FC<Props> = props => {
   return (
     <Container>
-      <Time>{props.hour}</Time>
+      <Time>{makeTwoLengthToNumber(props.hour)}</Time>
       <Conlon>:</Conlon>
-      <Time>{props.minute}</Time>
+      <Time>{makeTwoLengthToNumber(props.minute)}</Time>
       <Conlon>:</Conlon>
-      <Time>{props.second}</Time>
+      <Time>{makeTwoLengthToNumber(props.second)}</Time>
     </Container>
   );
 };
