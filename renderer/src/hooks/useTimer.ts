@@ -26,7 +26,6 @@ export function useTimer() {
 
   const stopTimer = useCallback(() => {
     if (timerID) {
-      console.log("timerID: ", timerID);
       clearInterval(timerID);
     }
   }, [timerID]);
@@ -44,7 +43,12 @@ export function useTimer() {
   }
 
   const hour = currentTime.diff(startTime, "hour") % 24;
-  const minute = currentTime.diff(startTime, "minute") % 60;
+
+  const minute =
+    currentTime.diff(startTime, "minute") % 60 > 0
+      ? currentTime.diff(startTime, "minute") % 60
+      : 0;
+
   const second =
     currentTime.diff(startTime, "second") % 60 > 0
       ? currentTime.diff(startTime, "second") % 60
